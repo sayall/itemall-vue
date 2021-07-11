@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div  >
+   <router-view>
+<!--     展示区-->
+   </router-view>
+    <FooterGuide>
+<!--      导航-->
+    </FooterGuide>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+//引入导航条
+import FooterGuide from '@/components/FooterGuide/FooterGuide'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FooterGuide
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+@import url(./assets/css/variables);
+
+
 </style>
