@@ -1,14 +1,15 @@
 //背景色
-@bColorLightest :#f6f6f6;
-@bColorlighter:#a1a4aa;
-@bColor:#707378;
-@bColorDark:#090c19;
+@bColorW: #ffffff;
+@bColorLightest: #f6f6f6;
+@bColorlighter: #a1a4aa;
+@bColor: #707378;
+@bColorDark: #090c19;
 //主题色
-@themeColor:#00bfc0;
-@themeColorDark:#006c6f;
+@themeColor: #00bfc0;
+@themeColorDark: #006c6f;
 //高亮
-@LightColor:#ffc712;
-@LightestColor:#ff7500;
+@LightColor: #ffc712;
+@LightestColor: #ff7500;
 //清除浮动
 .clearfix {
   display: block;
@@ -21,5 +22,37 @@
     height: 0;
     clear: both;
     visibility: hidden;
+  }
+}
+
+// 一像素下边框
+.bottom-border-1px(@color) {
+  position: relative;
+  border: none;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: @color;
+    transform: scaleY(0.5);
+  }
+}
+
+// 一像素上边框
+.top-border-1px(@color) {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: @color;
+    transform: scaleY(0.5);
   }
 }

@@ -23,6 +23,6 @@ export default {
 
 <style lang="less">
 @import url(./assets/css/variables);
-
+@import url(./assets/font/iconfont.css);
 
 </style>
