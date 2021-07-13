@@ -31,35 +31,14 @@ export default {
 @import url(./../../assets/css/variables);
 
 .footer-guide {
+  background-color: @bColorW;
   .top-border-1px(@bColorlighter);
   position: fixed;
-  height: 115px;
+  height: 110px;
   width: 100%;
   left: 0;
   bottom: 0;
   display: flex;
-
-  .guide-item {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: @bColorDark;
-
-    &.active {
-      color: @themeColor;
-    }
-
-    span {
-      font-size: 20px;
-
-      i {
-        font-size: 40px;
-      }
-    }
-
-  }
 
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div  >
+  <div id="app"  >
    <router-view>
 <!--     展示区-->
    </router-view>
@@ -24,5 +24,8 @@ export default {
 <style lang="less">
 @import url(./assets/css/variables);
 @import url(./assets/font/iconfont.css);
+html,body,#app{
+  height: 100%;
+}
 
 </style>

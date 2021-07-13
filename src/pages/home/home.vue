@@ -1,24 +1,29 @@
 <template>
-  <div>
-    首页
-    <van-button  class="test" @click="testclick">test</van-button>
+  <div class="home">
+    <HeaderBar></HeaderBar>
+    <van-swipe class="home-swipe" :autoplay="2000" indicator-color="white">
+      <van-swipe-item>1</van-swipe-item>
+      <van-swipe-item>2</van-swipe-item>
+      <van-swipe-item>3</van-swipe-item>
+      <van-swipe-item>4</van-swipe-item>
+    </van-swipe>
+
 
   </div>
 </template>
 
 <script>
-import { Button } from 'vant'
-import { Toast } from 'vant';
+import HeaderBar from '@/components/HeaderBar'
+import { Swipe, SwipeItem } from 'vant';
   export default {
     name: 'home',
     components:{
-      'van-button':Button,
+      HeaderBar,
+      'van-swipe':Swipe,
+      'van-swipe-item':SwipeItem,
     },
     methods:{
-      testclick(){
 
-  Toast('提示内容');
-      },
     },
     
   }
@@ -26,9 +31,18 @@ import { Toast } from 'vant';
 
 <style lang="less" scoped>
 @import url(./../../assets/css/variables);
-.test{
-  background-color:@themeColor;
-  color:@bColorLightest
+.home{
+  background-color: @bColorLightest;
+  min-height:100%;
+  .home-swipe{
+    margin:26px 18px ;
+    background-color:@themeColor;
+    color: #fff;
+    font-size: 20px;
+    line-height: 150px;
+    text-align: center;
+
+  }
 }
 
 </style>
