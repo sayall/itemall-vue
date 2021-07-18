@@ -1,11 +1,16 @@
 <template>
   <div class="home">
-    <HeaderBar></HeaderBar>
+    <HeaderBar >
+      <template slot="centerBar">
+       首页
+      </template>
+    </HeaderBar>
     <van-swipe class="home-swipe" :autoplay="2000" indicator-color="white">
       <van-swipe-item>1</van-swipe-item>
       <van-swipe-item>2</van-swipe-item>
       <van-swipe-item>3</van-swipe-item>
       <van-swipe-item>4</van-swipe-item>
+
     </van-swipe>
 
 
@@ -13,18 +18,26 @@
 </template>
 
 <script>
-import HeaderBar from '@/components/HeaderBar'
 import { Swipe, SwipeItem } from 'vant';
+import {reqBanner} from "@/api";
+import {toast} from "@/util";
+
   export default {
     name: 'home',
     components:{
-      HeaderBar,
       'van-swipe':Swipe,
       'van-swipe-item':SwipeItem,
     },
-    methods:{
+    data() {
+      return {
 
+      };
     },
+    async mounted() {
+
+      console.log(await reqBanner())
+    },
+
     
   }
 </script>
@@ -41,7 +54,6 @@ import { Swipe, SwipeItem } from 'vant';
     font-size: 20px;
     line-height: 150px;
     text-align: center;
-
   }
 }
 

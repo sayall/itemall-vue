@@ -40,9 +40,9 @@ export default {
   }
 
   span {
-    font-size: 20px;
+    font-size: 26px;
     i {
-      font-size: 40px;
+      font-size: 50px;
     }
   }
 

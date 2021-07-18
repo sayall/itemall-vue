@@ -1,6 +1,13 @@
 <template>
   <div>
-    购物车
+    <HeaderBar >
+      <template slot="centerBar">
+        购物车
+      </template>
+      <template slot="rightBar">
+        编辑
+      </template>
+    </HeaderBar>
   </div>
 </template>
 

@@ -6,6 +6,7 @@ import home from "@/pages/home/home";
 import cart from "@/pages/cart/cart";
 import profile from "@/pages/profile/profile";
 import category from "@/pages/category/category";
+import login from  "@/pages/Login/login";
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,13 @@ export default new VueRouter({
 		{//分类
 			path: '/category',
 			component: category
+		},
+		{//登录
+			path: '/login',
+			component: login,
+			meta: {
+				isHidden: 'ture'
+			}
 		},
 		{//重定向首页
 			path:'/',

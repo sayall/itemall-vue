@@ -3,7 +3,7 @@
    <router-view>
 <!--     展示区-->
    </router-view>
-    <FooterGuide>
+    <FooterGuide v-if="!$route.meta.isHidden">
 <!--      导航-->
     </FooterGuide>
 
