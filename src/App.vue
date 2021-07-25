@@ -1,6 +1,6 @@
 <template>
   <div id="app"  >
-   <router-view>
+   <router-view id="main-view">
 <!--     展示区-->
    </router-view>
     <FooterGuide v-if="!$route.meta.isHidden">
@@ -25,7 +25,19 @@ export default {
 @import url(./assets/css/variables);
 @import url(./assets/font/iconfont.css);
 html,body,#app{
-  height: 100%;
+  min-height: 100%;
+  font-family:Noto Sans SC;
+  font-style: normal;
+  font-weight: 400;
 }
+//最小高度及设置底部
+#main-view{
+  min-height: 100vh;
+  padding-bottom: @footHeight;
+  background-color: @bColorLightest;
+  box-sizing: border-box;
+}
+
+
 
 </style>

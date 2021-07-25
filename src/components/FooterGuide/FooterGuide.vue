@@ -34,7 +34,7 @@ export default {
   background-color: @bColorW;
   .top-border-1px(@bColorlighter);
   position: fixed;
-  height: 110px;
+  height: @footHeight;
   width: 100%;
   left: 0;
   bottom: 0;

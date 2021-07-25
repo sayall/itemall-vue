@@ -1,6 +1,7 @@
 //统一封装ajax
 import axios from "axios";
 import {toast} from '../util'
+import { Indicator } from 'mint-ui';
 
 const  instance = axios.create({
 	baseURL: '/api',
@@ -21,6 +22,10 @@ const handleError = (err) => {
 //请求拦截器
 instance.interceptors.request.use(
 	(config)=>{
+		Indicator.open({
+			text: '加载中...',
+			spinnerType: 'fading-circle'
+		});
 		return config
 	}
 )
@@ -28,9 +33,11 @@ instance.interceptors.request.use(
 //响应拦截器
 instance.interceptors.response.use(
 	respose =>{
+		Indicator.close();
 		return respose.data.data
 	},
 	error => {
+		Indicator.close();
 		handleError(error.response.data)
 	}
 )

@@ -7,11 +7,20 @@ module.exports = {
 	// 选项...
 	css: { // 添加postcss配置
 		loaderOptions: {
+			less: {
+				lessOptions: {
+				modifyVars: {
+					// 初始化可直接覆盖变量
+					'tabs-line-height': '1.2rem',
+					'tabs-card-height': '1.2rem',
+				},
+				}
+			},
 			postcss: {
 				plugins: [
 					postcss
 				]
-			}
+			},
 		}
 	},
 	devServer: {
