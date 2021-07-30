@@ -5,6 +5,7 @@
         首页
       </template>
     </HeaderBar>
+
     <!--    轮播-->
     <van-swipe :autoplay="3000" class="home-swipe" indicator-color="white">
       <van-swipe-item v-for="item in banner" :key="item.id"><img :alt="item.title" :src="item.image" class="swipe-img"/>
@@ -20,25 +21,31 @@
     </ul>
 
     <!--    列表-->
-    <van-tabs id="goodsList" background="#f6f6f6" v-model="activeName" :sticky="true" animated color="#00BFC0"
-              title-active-color="#00BFC0" line-width="50px"	>
-      <van-tab name="pop" ><template #title><div class="goodListBar">流行</div></template>
-        <div class="GoodList">
-          <div class="leftGoodList"><goodItem v-for="item in leftGoods" :key="item.index" :goodInfo="item"></goodItem></div>
-          <div class="rightGoodList"><goodItem v-for="item in rightGoods" :key="item.index" :goodInfo="item"></goodItem></div>
 
-        </div> <loadmore-no-data-tip></loadmore-no-data-tip></van-tab>
-      <van-tab name="pop" ><template #title><div class="goodListBar">新款</div></template>
-        <div class="GoodList">
-          <div class="leftGoodList">左</div>
-          <div class="rightGoodList">右</div>
-        </div> <loadmore-no-data-tip></loadmore-no-data-tip></van-tab>
-      <van-tab name="pop" ><template #title><div class="goodListBar">精选</div></template>
-        <div class="GoodList">
-          <div class="leftGoodList">左</div>
-          <div class="rightGoodList">右</div>
+    <van-tabs id="goodsList" v-model="activeName" :sticky="true" animated background="#f6f6f6" color="#00BFC0"
+              line-width="50px" title-active-color="#00BFC0">
 
-        </div> <loadmore-no-data-tip></loadmore-no-data-tip></van-tab>
+      <van-tab name="pop">
+        <template #title>
+          <div class="goodListBar">流行</div>
+        </template>
+        <goodWaterfall type="pop" :activeName="activeName"></goodWaterfall>
+      </van-tab>
+
+      <van-tab name="new">
+        <template #title>
+          <div class="goodListBar">新款</div>
+        </template>
+        <goodWaterfall type="new" :activeName="activeName"></goodWaterfall>
+
+      </van-tab>
+
+      <van-tab name="sell">
+        <template #title>
+          <div class="goodListBar">精选</div>
+        </template>
+        <goodWaterfall type="sell" :activeName="activeName"></goodWaterfall>
+      </van-tab>
 
     </van-tabs>
 
@@ -47,45 +54,31 @@
 
 <script>
 import {Swipe, SwipeItem} from 'vant';
-import {reqBanner, reqGoodsList, reqRecommend} from "@/api";
-import LoadmoreNoDataTip from "@/components/loadmore-noData-tip";
-import goodItem from "@/pages/home/goodItem";
+import {reqBanner, reqRecommend} from "@/api";
+import goodWaterfall from "@/components/goodWaterfall/goodWaterfall";
 
 export default {
   name: 'home',
   components: {
-    LoadmoreNoDataTip,
     'van-swipe': Swipe,
     'van-swipe-item': SwipeItem,
-    goodItem,
+    goodWaterfall,
   },
   data() {
     return {
       banner: [],
       recommend: [],
-      tab: [],
-      queryGoods: {page: 1, pageSize: 10, ordersby: 'orgPrice', sort: 'DESC', type: 'pop'},
       activeName: 'pop',
-      goodsArr:{},
-      leftGoods:[],
-      rightGoods:[],
     };
   },
   async mounted() {
 
     this.banner = await reqBanner();
     this.recommend = await reqRecommend();
-    this.goodsArr = await reqGoodsList(this.queryGoods);
-    this.goodsArr.goods.forEach((good,index)=>{
-      if( !(index%2 )){
-        this.leftGoods.push(good)
-      }else{
-        this.rightGoods.push(good)
-      }
-    })
-
-
   },
+  beforeDestroy() {
+    console.log('home')
+  }
 
 
 }
@@ -145,28 +138,16 @@ export default {
     width: 95%;
     margin: 0 auto;
 
-  .goodListBar{
-    height: 90px;
-    line-height: 90px;
-    font-size: 40px;
-    font-weight: 500;
-  }
+    .goodListBar {
+      height: 90px;
+      line-height: 90px;
+      font-size: 40px;
+      font-weight: 500;
+    }
+
     /deep/ .van-tabs__wrap {
       height: 1.2rem !important;
     }
-   .GoodList{
-     display: flex;
-     width: 95%;
-     margin: 0 auto;
-
-     .leftGoodList,.rightGoodList{
-       flex:1;
-     }
-     .leftGoodList{
-       margin-right:10px ;
-     }
-
-   }
   }
 }
 

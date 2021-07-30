@@ -1,5 +1,5 @@
 <template>
-<div class="goodItem">
+<div class="goodItem" @click="gotoDetail">
 <div class="goodImg"><img :src="img"></div>
  <div class="goodTitle">{{goodInfo.title}}</div>
   <div class="goodtMore"><span class="goodPrice">{{goodInfo.price}}</span><i>…</i></div>
@@ -15,6 +15,11 @@ export default {
     img:function (){
       return JSON.parse(this.goodInfo.show).img
     }
+  },
+  methods:{
+    gotoDetail(){
+      this.$router.replace({path: '/detail/'+this.goodInfo.iid })
+    },
   },
 }
 

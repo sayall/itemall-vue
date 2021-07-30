@@ -7,6 +7,7 @@ import cart from "@/pages/cart/cart";
 import profile from "@/pages/profile/profile";
 import category from "@/pages/category/category";
 import login from  "@/pages/Login/login";
+import goodDetail from "@/pages/home/goodDetail";
 
 Vue.use(VueRouter)
 
@@ -16,7 +17,8 @@ export default new VueRouter({
 	routes: [
 		{//首页
 			path: '/home',
-			component: home
+			component: home,
+
 		},
 		{//购物车
 			path: '/cart',
@@ -39,7 +41,17 @@ export default new VueRouter({
 		},
 		{//重定向首页
 			path:'/',
-			redirect:'/home'
+			redirect:'/home',
+			children:[
+
+			],
+		},
+		{
+			path: '/detail/:gid',
+			component: goodDetail,
+			meta: {
+				isHidden: 'ture'
+			}
 		}
 
 	]

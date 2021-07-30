@@ -1,8 +1,9 @@
 <template>
   <div id="app"  >
-   <router-view id="main-view">
+<keep-alive include=" ">
+      <router-view id="main-view">
 <!--     展示区-->
-   </router-view>
+   </router-view></keep-alive>
     <FooterGuide v-if="!$route.meta.isHidden">
 <!--      导航-->
     </FooterGuide>
